@@ -1,0 +1,21 @@
+# Use Python slim image
+FROM python:3.12
+
+# Set working directory
+WORKDIR /app
+
+
+# Copy application files
+COPY vault_metrics.py config.yml requirements.txt /app/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir  -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+
+# Expose Prometheus scrape port
+EXPOSE 8000
+
+# Healthcheck for Prometheus
+HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:8000/metrics || exit 1
+
+# Run the script
+CMD ["python", "vault_metrics.py"]

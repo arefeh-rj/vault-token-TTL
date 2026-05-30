@@ -1,0 +1,10 @@
+vault_nodes:
+  # - "http://127.0.0.1:8200"
+  - "http://10.1.20.200:8200"
+  - "http://10.1.20.201:8200"
+  - "http://10.1.20.202:8200"
+
+vault_token: "hvs.qHvfzB2Ewaaq1Dt2Z9zuGbaz"  # Replace with your minimal policy token
+scrape_port: 8000
+scrape_interval: 30
+alert_threshold_minutes: 5
